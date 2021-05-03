@@ -1,7 +1,7 @@
 
 ## About Pembayaran-SPP
 
-Tugas kelompok pembuatan aplikasi di sekolah [SMK Taruna Bhakti Depok.](https://www.smktarunabhakti.net)
+Tugas kelompok pembuatan aplikasi pembayaran spp di sekolah [SMK Taruna Bhakti Depok.](https://www.smktarunabhakti.net)
 
 ## Schema Database
 
