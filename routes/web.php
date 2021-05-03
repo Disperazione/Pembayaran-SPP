@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Routing\ViewController;
+use App\Http\Controllers\ViewController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,17 @@ use Illuminate\Routing\ViewController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // view controller untuk route view aja
-Route::get('/', [ViewController::class, 'login'])->name('login');
+Route::get('/', [ViewController::class, 'Login'])->name('login');
 
+
+// abaikan ini
+Route::middleware('auth:siswa', 'level:siswa')->group(function () {
+});
+
+Route::middleware('auth:petugas','level:petugas')->group(function () {
+});
+
+Route::middleware('auth:petugas', 'level:admin')->group(function () {
+});
