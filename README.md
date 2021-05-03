@@ -7,6 +7,10 @@ Tugas kelompok pembuatan aplikasi di sekolah [SMK Taruna Bhakti Depok.](https://
 
 <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/Nfg2fd8B/schema.png' border='0' alt='schema' width='60%'></a>
 
+
+## Preview
+
+
 ## How to use
 
 - Clone repositori dengan git clone
