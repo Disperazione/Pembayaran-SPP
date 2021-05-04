@@ -100,7 +100,7 @@
     <div class="login-page">
         <div class="kotak"></div>
         <div class="form">
-            <p class="title">Login To Your Account</p>
+            <p class="title">Login To Your Account </p>
             <form class="login-form" method="post" action="{{ route('post.login') }}">
                 @csrf
                 <input class="@error('username') is-invalid @enderror" type="text" name="username" placeholder="Username"/>

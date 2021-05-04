@@ -16,13 +16,23 @@ class PetugasSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
-        for ($i = 1; $i <= 2; $i++) {
-            DB::table('petugas')->insert([
-                'username' => $faker->randomElement(['admin','petugas']),
-                'level' => $faker->randomElement(['admin', 'petugas']),
-                'password' => Hash::make('password')
-            ]);
-        }
+        // $faker = Faker::create('id_ID');
+        // for ($i = 1; $i <= 2; $i++) {
+        //     DB::table('petugas')->insert([
+        //         'username' => $faker->randomElement(['admin','petugas']),
+        //         'level' => $faker->randomElement(['admin', 'petugas']),
+        //         'password' => Hash::make('password')
+        //     ]);
+        // }
+        DB::table('petugas')->insert([
+            'username' => 'admin',
+            'level' => 'admin',
+            'password' => Hash::make('password')
+        ]);
+        DB::table('petugas')->insert([
+            'username' => 'petugas',
+            'level' => 'petugas',
+            'password' => Hash::make('password')
+        ]);
     }
 }

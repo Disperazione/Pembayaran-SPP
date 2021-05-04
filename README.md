@@ -12,6 +12,7 @@ Tugas kelompok pembuatan aplikasi pembayaran spp di sekolah [SMK Taruna Bhakti D
 
 Coming Soon..
 
+
 ## How to use
 
 - Clone repositori dengan git clone
@@ -20,6 +21,14 @@ Coming Soon..
 - Jalankan php artisan key:generate
 - Jalankan php artisan migrate --seed (sudah termasuk seeder untuk pengujian)
 - Jika sudah, Lalu jalankan url utama | selesai.
+
+
+## Acount Management
+
+- Siswa : username = 1920100251 - 1920100259 | pass = password
+- Petugas : username = petugas | pass = password
+- Admin : username = Admin | pass = password 
+
 
 ## team project
 

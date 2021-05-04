@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => 'logout']);
+    }
     public function Login()
     {
         return view('auth.login');
@@ -19,15 +23,14 @@ class AuthController extends Controller
         // $remember = $request->remember == 'on' ? true : false; // rememberme
         if (Auth::guard('petugas')->attempt(['username' => $request->username, 'password' => $request->password]))
         {
+            $request->session()->regenerate();
             $level = Auth::guard('petugas')->user()->level;
             switch ($level) {
                 case 'petugas':
-                    $request->session()->regenerate();
-                    return redirect('/petugas/dashboard');
+                    return redirect()->intended('/petugas/dashboard');
                     break;
                 case 'admin':
-                    $request->session()->regenerate();
-                    return redirect('/petugas/dashboard');
+                    return redirect()->intended('/petugas/dashboard');
                     break;
             }
         }

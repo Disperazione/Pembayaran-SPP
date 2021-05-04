@@ -19,17 +19,20 @@ use App\Http\Controllers\petugas\mainController as maincontrollers;
 
 
 // view controller untuk route view aja
+
+
 Route::get('/', [AuthController::class, 'Login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postLogin'])->name('post.login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
 // route siswa
-Route::middleware('auth:siswa')->prefix('siswa')->group(function () {
+Route::middleware(['auth:siswa','level:siswa'])->prefix('siswa')->group(function () {
     Route::get('/dashboard', [mainController::class, 'dashboard'])->name('siswa.dashboard');
 });
 
 // Route petugas & admin
-Route::middleware('auth:petugas')->prefix('petugas')->group(function () {
+Route::middleware(['auth:petugas','level:petugas,admin'])->prefix('petugas')->group(function () {
 
     //main dashboard
     Route::get('/dashboard', [maincontrollers::class, 'dashboard'])->name('petugas.dashboard');

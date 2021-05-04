@@ -17,20 +17,15 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-               switch ($guard) {
-                    case 'siswa':
-                        return redirect(RouteServiceProvider::HOMESISWA);
-                    case 'petugas':
-                        return redirect(RouteServiceProvider::HOMEPETUGAS);
-                }
-            }
+        if (!empty(Auth::guard('petugas')->user()->id) && Auth::guard('petugas')->check()) {
+            return redirect(RouteServiceProvider::HOMEPETUGAS);
+        } else if (!empty(Auth::guard('siswa')->user()->id)&& Auth::guard('siswa')->check()) {
+            return redirect(RouteServiceProvider::HOMESISWA);
         }
 
-        return $next($request);
+    return $next($request);
     }
 }
+
