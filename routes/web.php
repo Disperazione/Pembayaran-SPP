@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\siswa\mainController;
+use App\Http\Controllers\petugas\mainController as maincontrollers;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,15 +19,31 @@ use App\Http\Controllers\ViewController;
 
 
 // view controller untuk route view aja
-Route::get('/', [ViewController::class, 'Login'])->name('login');
+Route::get('/', [AuthController::class, 'Login'])->name('login');
+Route::post('/postlogin', [AuthController::class, 'postLogin'])->name('post.login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-// abaikan ini
-Route::middleware('auth:siswa', 'level:siswa')->group(function () {
+// route siswa
+Route::middleware('auth:siswa')->prefix('siswa')->group(function () {
+    Route::get('/dashboard', [mainController::class, 'dashboard'])->name('siswa.dashboard');
 });
 
-Route::middleware('auth:petugas','level:petugas')->group(function () {
+// Route petugas & admin
+Route::middleware('auth:petugas')->prefix('petugas')->group(function () {
+
+    //main dashboard
+    Route::get('/dashboard', [maincontrollers::class, 'dashboard'])->name('petugas.dashboard');
+
+    // petugas
+    Route::middleware('level:petugas')->group(function () {
+
+    });
+
+    // admin
+    Route::middleware('level:admin')->group(function () {
+
+    });
 });
 
-Route::middleware('auth:petugas', 'level:admin')->group(function () {
-});
+
+

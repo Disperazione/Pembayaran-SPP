@@ -18,7 +18,7 @@ class SiswaSeeder extends Seeder
         $faker = Faker::create('id_ID');
         for ($i = 1; $i <= 10; $i++) {
             DB::table('siswa')->insert([
-                'nisn' => '000000000',
+                'nisn' => "192010025$i",
                 'nis' => '00000000',
                 'nama' => $faker->name,
                 'alamat' => $faker->address,

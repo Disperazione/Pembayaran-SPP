@@ -17,9 +17,9 @@ class level
      */
     public function handle(Request $request, Closure $next, ...$level)
     {
-        if (is_array(Auth::guard('petugas')->level,$level)) {
+        if (Auth::guard('petugas')->check() && in_array(Auth::guard('petugas')->user()->level,$level)) {
             return $next($request);
-        }else if (is_array('siswa', $level)) {
+        }else if (Auth::guard('siswa')->check() && in_array('siswa', $level)) {
             return $next($request);
         }
         return back();

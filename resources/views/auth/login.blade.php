@@ -39,6 +39,15 @@
             box-sizing: border-box;
             font-size: 14px;
         }
+        .form .is-invalid{
+            border:  2px solid red;
+            background: #ff7979;
+            opacity: 0.5;
+        }
+        .form .is-invalid::placeholder {
+            color: black;
+            opacity: 1; /* Firefox */
+        }
         .form button {
             font-family: "Roboto", sans-serif;
             text-transform: uppercase;
@@ -92,10 +101,21 @@
         <div class="kotak"></div>
         <div class="form">
             <p class="title">Login To Your Account</p>
-            <form class="login-form" method="">
-                <input type="text" name="username" placeholder="Username"/>
-                <input style="letter-spacing: 3px;" type="password" name="password" placeholder="Password"/>
-                <button>login</button>
+            <form class="login-form" method="post" action="{{ route('post.login') }}">
+                @csrf
+                <input class="@error('username') is-invalid @enderror" type="text" name="username" placeholder="Username"/>
+                @error('username')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+                <input class="@error('password') is-invalid @enderror" type="password" name="password" placeholder="Password"/>
+                @error('password')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+                <button type="submit">login</button>
                 <p class="message">Forgot Password?  <a href="#">Tap Here</a></p>
             </form>
         </div>
