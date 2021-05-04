@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\siswa\mainController;
+
+// petugas controller
 use App\Http\Controllers\petugas\mainController as maincontrollers;
+
+// siswa controller
+use App\Http\Controllers\siswa\mainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,24 +31,25 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // route siswa
-Route::middleware(['auth:siswa','level:siswa'])->prefix('siswa')->group(function () {
-    Route::get('/dashboard', [mainController::class, 'dashboard'])->name('siswa.dashboard');
+Route::prefix('siswa')->name('siswa')->namespace('siswa')->middleware(['auth:siswa','level:siswa'])->group(function () {
+    Route::get('/dashboard', [mainController::class, 'dashboard'])->name('dashboard');
+    Route::get('/transaksi', [mainController::class, 'transaksi'])->name('transaksi');
+    Route::get('/history', [mainController::class, 'history'])->name('history');
 });
 
 // Route petugas & admin
-Route::middleware(['auth:petugas','level:petugas,admin'])->prefix('petugas')->group(function () {
+Route::prefix('petugas')->namespace('petugas')->name('petugas.')->middleware(['auth:petugas','level:petugas,admin'])->group(function () {
 
     //main dashboard
-    Route::get('/dashboard', [maincontrollers::class, 'dashboard'])->name('petugas.dashboard');
-
-    // petugas
-    Route::middleware('level:petugas')->group(function () {
-
-    });
+    Route::get('/dashboard', [maincontrollers::class, 'dashboard'])->name('dashboard');
+    Route::resource('transaksi', TransaksiController::class);
 
     // admin
     Route::middleware('level:admin')->group(function () {
-
+        Route::resource('siswa', SiswaController::class);
+        Route::resource('main', PetugasController::class);
+        Route::resource('spp', SppController::class);
+        Route::resource('kelas', KelasController::class);
     });
 });
 

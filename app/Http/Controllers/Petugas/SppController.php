@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Petugas;
+namespace App\Http\Controllers\petugas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Petugas;
+use App\Models\Spp;
 use Illuminate\Http\Request;
 
-class PetugasController extends Controller
+class SppController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        return view('petugas.data_petugas.index');
+        return view('petugas.data_spp.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        return view('petugas.data_petugas.create');
+        return view('petugas.data_spp.create');
     }
 
     /**
@@ -36,50 +36,50 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Petugas  $petugas
+     * @param  \App\Models\Spp  $spp
      * @return \Illuminate\Http\Response
      */
-    public function show(Petugas $petugas)
+    public function show(Spp $spp)
     {
-        return view('petugas.data_petugas.show');
+        return view('petugas.data_spp.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Petugas  $petugas
+     * @param  \App\Models\Spp  $spp
      * @return \Illuminate\Http\Response
      */
-    public function edit(Petugas $petugas)
+    public function edit(Spp $spp)
     {
-        return view('petugas.data_petugas.show');
+        return view('petugas.data_spp.edit');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Petugas  $petugas
+     * @param  \App\Models\Spp  $spp
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Petugas $petugas)
+    public function update(Request $request, Spp $spp)
     {
-        //
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Petugas  $petugas
+     * @param  \App\Models\Spp  $spp
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Petugas $petugas)
+    public function destroy(Spp $spp)
     {
         //
     }

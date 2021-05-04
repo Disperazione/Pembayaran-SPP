@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Petugas;
+namespace App\Http\Controllers\petugas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Petugas;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 
-class PetugasController extends Controller
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        return view('petugas.data_petugas.index');
+        return view('petugas.data_transaksi.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        return view('petugas.data_petugas.create');
+        return view('petugas.data_transaksi.create');
     }
 
     /**
@@ -36,39 +36,39 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Petugas  $petugas
+     * @param  \App\Models\Pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function show(Petugas $petugas)
+    public function show(Pembayaran $pembayaran)
     {
-        return view('petugas.data_petugas.show');
+        return view('petugas.data_transaksi.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Petugas  $petugas
+     * @param  \App\Models\Pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(Petugas $petugas)
+    public function edit(Pembayaran $pembayaran)
     {
-        return view('petugas.data_petugas.show');
+        return view('petugas.data_transaksi.edit');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Petugas  $petugas
+     * @param  \App\Models\Pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Petugas $petugas)
+    public function update(Request $request, Pembayaran $pembayaran)
     {
         //
     }
@@ -76,10 +76,10 @@ class PetugasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Petugas  $petugas
+     * @param  \App\Models\Pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Petugas $petugas)
+    public function destroy(Pembayaran $pembayaran)
     {
         //
     }

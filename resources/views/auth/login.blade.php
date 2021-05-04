@@ -103,13 +103,13 @@
             <p class="title">Login To Your Account </p>
             <form class="login-form" method="post" action="{{ route('post.login') }}">
                 @csrf
-                <input class="@error('username') is-invalid @enderror" type="text" name="username" placeholder="Username"/>
+                <input class="@error('username') is-invalid @enderror" type="text" name="username" placeholder="Username" value="{{ old('username') }}">
                 @error('username')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
                 @enderror
-                <input class="@error('password') is-invalid @enderror" type="password" name="password" placeholder="Password"/>
+                <input class="@error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
                 @error('password')
                 <div class="invalid-feedback">
                     {{ $message }}

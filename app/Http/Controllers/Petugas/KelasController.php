@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Siswa;
+namespace App\Http\Controllers\petugas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Siswa;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
-class SiswaController extends Controller
+class KelasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view('petugas.data_kelas.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('petugas.data_kelas.create');
     }
 
     /**
@@ -42,44 +42,44 @@ class SiswaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Siswa  $siswa
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function show(Siswa $siswa)
+    public function show(Kelas $kelas)
     {
-        //
+        return view('petugas.data_kelas.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Siswa  $siswa
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Siswa $siswa)
+    public function edit(Kelas $kelas)
     {
-        //
+        return view('petugas.data_kelas.edit');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Siswa  $siswa
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Siswa $siswa)
+    public function update(Request $request, Kelas $kelas)
     {
-        //
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Siswa  $siswa
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Siswa $siswa)
+    public function destroy(Kelas $kelas)
     {
         //
     }
