@@ -1,1 +1,17 @@
-<h1>ini history</h1>
+@extends('template.master')
+@push('link')
+
+@endpush
+@section('title', 'Pembayaran SPP | HISTORY')
+@section('judul', 'HISTORY')
+@section('breadcrump')
+
+@endsection
+@section('main')
+
+@endsection
+@push('script')
+
+@endpush
+
+

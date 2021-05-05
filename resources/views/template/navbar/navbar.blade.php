@@ -10,7 +10,11 @@
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 {{-- <img alt="image" src="{{ asset('images/tb.png') }}" class="rounded-circle mr-1"> --}}
                 <div class="d-sm-none d-lg-inline-block">
-                    {{ Auth::user()->nama }}
+                    @if (Auth::guard('siswa')->check())
+                        {{ Auth::user()->nama }}
+                    @elseif(Auth::guard('petugas')->check())
+                        {{ Auth::user()->username }}
+                    @endif
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
