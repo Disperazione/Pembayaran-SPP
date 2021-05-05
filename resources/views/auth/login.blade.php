@@ -34,7 +34,6 @@
             background: #f2f2f2;
             width: 90%;
             border: 0;
-            margin: 0 0 15px;
             padding: 15px;
             box-sizing: border-box;
             font-size: 14px;
@@ -92,6 +91,11 @@
             color: #00a8ff;
             margin-top: -20px;
         }
+        .mar-left{
+            margin-left: 29px;
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
     </style>
     <title>Pembayaran SPP | Login</title>
 </head>
@@ -100,20 +104,20 @@
     <div class="login-page">
         <div class="kotak"></div>
         <div class="form">
-            <p class="title">Login To Your Account </p>
+            <p class="title text-left mar-left"><i class="fas fa-bars mr-2"></i>Login To Your Account </p>
             <form class="login-form" method="post" action="{{ route('post.login') }}">
                 @csrf
-                <input class="@error('username') is-invalid @enderror" type="text" name="username" placeholder="Username" value="{{ old('username') }}">
+                <input class="@error('username') is-invalid @enderror mb-4" type="text" name="username" placeholder="Username" value="{{ old('username') }}">
                 @error('username')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
+                    <div class="invalid-feedback text-left mar-left">
+                        {{ $message }}
+                    </div>
                 @enderror
-                <input class="@error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
+                <input class="@error('password') is-invalid @enderror mb-4" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
                 @error('password')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
+                    <div class="invalid-feedback text-left mar-left">
+                        {{ $message }}
+                    </div>
                 @enderror
                 <button type="submit">login</button>
                 <p class="message">Forgot Password?  <a href="#">Tap Here</a></p>

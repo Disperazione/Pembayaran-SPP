@@ -34,7 +34,7 @@ Coming Soon..
 
 - **[Rafie Aydin Ihsan]()**
 - **[Aulia Putri Rivai]()**
-- **[walada Hulama Zaki]()**
+- **[Walada Hulama Zaqi]()**
 - **[Dalilah Khairunnisa]()**
 - **[Andhika rizki Hidayat Putra]()**
 - **[Andhika Gusti Putra Cahyadi]()**
