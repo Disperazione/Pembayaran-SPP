@@ -21,6 +21,9 @@ class CreatePetugasTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::table('pembayaran', function (Blueprint $table) {
+            $table->foreign('petugas_id')->references('id')->on('petugas')->onDelete('cascade')->onUpdate('cascade');
+        });
     }
 
     /**

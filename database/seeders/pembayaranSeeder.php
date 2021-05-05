@@ -26,6 +26,7 @@ class pembayaranSeeder extends Seeder
                 'jumlah_bayar' => 2000000,
                 'spp_id'  => $faker->randomElement([1]),
                 'status'  => $faker->randomElement(['bayar','belum']),
+                'petugas_id' => 1
             ]);
         }
     }

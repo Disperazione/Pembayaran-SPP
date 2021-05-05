@@ -19,4 +19,8 @@ class Pembayaran extends Model
     {
         return $this->belongsTo(Spp::class, 'spp_id');
     }
+    public function petugas()
+    {
+        return $this->belongsTo(Petugas::class,'petugas_id');
+    }
 }
