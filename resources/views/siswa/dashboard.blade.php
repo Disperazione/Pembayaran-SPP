@@ -1,7 +1,28 @@
 @extends('template.master')
 @push('link')
 <style>
-    .blok-dash{
+    div .box{
+        /* box-shadow: 0 0 5px grey; */
+        transition: all .2s ease-in-out;
+    }
+    div .box:hover{
+        transform: scale(1.1);
+    }
+    .title{
+        font-size: 30px;
+        margin-top: 40px;
+        font-weight: 100;
+    }
+    hr{
+        margin-top: -20px;
+    }
+    .card-app{
+        height: 400px;
+    }
+    .card-content{
+        margin-top: -20px;
+    }
+    .col-sm-4{
         margin: 0px auto;
     }
 
@@ -14,136 +35,45 @@
         <div class="breadcrumb-item "><i class="fas fa-tachometer-alt"></i> DASBOARD</div>
 @endsection
 @section('main')
-<div class="row">
-    {{-- transaksi --}}
-    <div class="col-md-5">
-        <div class="card">
-          <div class="card-header">
-            <h4>Transaksi</h4>
-            <div class="card-header-action">
-                <div class="row">
-                    <div class="mr-4">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="100" style="width: 100px;">
-                        {{-- <button class="btn" type="submit"><i class="fas fa-search"></i></button> --}}
-                        <div class="search-backdrop"></div>
-                    </div>
-                    <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-          </div>
-          <div class="card-body p-0">
-            <div class="table-responsive table-invoice">
-              <table class="table table-striped text-center">
-                <tbody><tr>
-                  <th>Tahun</th>
-                  <th>Bulan</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-                <tr>
-                  <td class="font-weight-600 bg-secondary text-white" rowspan="12">2020</td>
-                  <td>January</td>
-                  <td class="bg-success text-white">Lunas</td>
-                  <td>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-search"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                    <td>February</td>
-                    <td class="bg-danger text-white">Belum Lunas</td>
-                    <td>
-                      <a href="#" class="btn btn-primary"><i class="fas fa-search"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>March</td>
-                    <td class="bg-danger text-white">Belum Lunas</td>
-                    <td>
-                      <a href="#" class="btn btn-primary"><i class="fas fa-search"></i></a>
-                    </td>
-                </tr>
-              </tbody></table>
-            </div>
-          </div>
-          <div class="card-footer d-flex justify-content-end">
-            <nav aria-label="...">
-                <ul class="pagination">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-            </nav>
-          </div>
-        </div>
+<div class="card card-app" >
+    <div class="container-fluid H-100 mb-2">
+        <p class="ml-3 title"><i class="fas fa-bars mr-2" style="font-size: 25px;"></i>Pembayaran SPP SMK TARUNA BHAKTI</p>
     </div>
-    {{-- transaksi end --}}
+    <div class="card-body">
+        <hr>
+    </div>
 
-    {{-- history --}}
-    <div class="col-md-7">
-        <div class="card">
-          <div class="card-header">
-            <h4>History</h4>
-            <div class="card-header-action">
-                <div class="row">
-                    <div class="mr-4">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="100" style="width: 100px;">
-                        {{-- <button class="btn" type="submit"><i class="fas fa-search"></i></button> --}}
-                        <div class="search-backdrop"></div>
+    <div class="card-body container-fluid card-content">
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="" style="text-decoration: none">
+                    <div class="card card-hero shadow box">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="far fa-credit-card"></i>
+                            </div>
+                            <h5>Transaksi</h5>
+                            <div class="card-description">Transaction</div>
+                        </div>
                     </div>
-                    <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
-                </div>
+                </a>
             </div>
-          </div>
-          <div class="card-body p-0">
-            <div class="table-responsive table-invoice">
-              <table class="table table-striped">
-                <tbody><tr>
-                  <th>Tanggal Bayar</th>
-                  <th>Bulan</th>
-                  <th>Tahun</th>
-                  <th>Jumlah Nominal</th>
-                  <th>Action</th>
-                </tr>
-                <tr>
-                  <td class="font-weight-600">01-12-2020</td>
-                  <td>January</td>
-                  <td>2020</td>
-                  <td>Rp. 200.000</td>
-                  <td>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-search"></i></a>
-                  </td>
-                </tr>
-              </tbody></table>
+            <div class="col-sm-4">
+                <a href="" style="text-decoration: none">
+                    <div class="card card-hero shadow box">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="far fa-credit-card"></i>
+                            </div>
+                            <h5>History</h5>
+                            <div class="card-description">Transaction</div>
+                        </div>
+                    </div>
+                </a>
             </div>
-          </div>
-          <div class="card-footer d-flex justify-content-end">
-            <nav aria-label="...">
-                <ul class="pagination">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-            </nav>
-          </div>
         </div>
     </div>
-    {{-- history end --}}
+        {{-- itesmashboard end --}}
 </div>
 @endsection
 @push('script')
