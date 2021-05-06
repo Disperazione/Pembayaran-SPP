@@ -42,6 +42,8 @@ Route::prefix('petugas')->namespace('petugas')->name('petugas.')->middleware(['a
 
     //main dashboard
     Route::get('/dashboard', [maincontrollers::class, 'dashboard'])->name('dashboard');
+    Route::post('/dashboard/ajax', [maincontrollers::class, 'ajax'])->name('dashboard.ajax');
+
     Route::resource('transaksi', TransaksiController::class);
 
     // admin

@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Authrequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
-
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 class AuthController extends Controller
 {
     public function __construct()

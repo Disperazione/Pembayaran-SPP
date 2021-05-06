@@ -16,7 +16,7 @@ class SppSeeder extends Seeder
     public function run()
     {
         DB::table('spp')->insert([
-            'tahun' => 2020,
+            'tahun' => 2021,
             'nomimal' => 2000000
         ]);
     }

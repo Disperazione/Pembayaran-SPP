@@ -21,7 +21,7 @@ class CreatePembayaranTable extends Migration
             $table->string('tahun_bayar');
             $table->unsignedBigInteger('spp_id');
             $table->string('jumlah_bayar', 45);
-            $table->string('status');
+            $table->enum('status', ['bayar', 'belum']);
              $table->unsignedBigInteger('petugas_id');
             $table->timestamps();
         });
