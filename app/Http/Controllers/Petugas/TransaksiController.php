@@ -5,6 +5,8 @@ namespace App\Http\Controllers\petugas;
 use App\Http\Controllers\Controller;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 class TransaksiController extends Controller
 {
@@ -25,6 +27,11 @@ class TransaksiController extends Controller
      */
     public function create()
     {
+        $result = CarbonPeriod::create("2021-01-01", "1 month", "2021-12-01");
+        $tanggal = [];
+        foreach ($result as $key => $value) {
+            $tanggal[] = $value->format('F');
+        }
         return view('petugas.data_transaksi.create');
     }
 
