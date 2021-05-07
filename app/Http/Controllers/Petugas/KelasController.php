@@ -15,7 +15,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('petugas.data_kelas.index');
+        return view('petugas.data_kelas.index', ['kelas' => Kelas::all()]);
     }
 
     /**
@@ -81,6 +81,7 @@ class KelasController extends Controller
      */
     public function destroy(Kelas $kelas)
     {
-        //
+        $kelas->delete();
+        return redirect()->route('petugas.kelas.index')->with('success', 'Data kelas berhasil di hapus');
     }
 }

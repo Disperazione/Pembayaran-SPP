@@ -1,6 +1,11 @@
 @extends('template.master')
 @push('link')
+<style>
+    .col-md-12 {
+        padding: 1;
+    }
 
+</style>
 @endpush
 @section('title', 'Pembayaran SPP | Data Siswa')
 @section('judul', 'Data Siswa')
@@ -11,110 +16,101 @@
 @section('main')
 <div class="row">
     <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-            <h4><i class="fas fa-align-justify mr-2"></i>Data Siswa</h4>
-        </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <div id="table-1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="dataTables_length" id="table-1_length">
-                            <label>Show
-                                <select name="table-1_length" aria-controls="table-1" class="custom-select custom-select-sm form-control form-control-sm">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> entries
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                        <div id="table-1_filter" class="dataTables_filter">
-                            <label>
-                                <a href="#" class="btn btn-primary rounded-pill">Add Siswa <i class="far fa-plus-square"></i></a>
-                                <input type="search" class="form-control" placeholder="Search" aria-controls="table-1">
-                            </label>
-                        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4><i class="fas fa-align-justify mr-2"></i>Data Siswa</h4>
+            </div>
+            <div class="card-body">
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>×</span>
+                        </button>
+                        {{ session('success') }}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table class="table table-striped dataTable no-footer" id="table-1" role="grid" aria-describedby="table-1_info">
-                            <thead>
-                                <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="table-1" aria-sort="ascending" aria-label="# : activate to sort column descending">
-                                    #
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="table-1" aria-label="NISN: activate to sort column ascending">
-                                        NISN
-                                    </th>
-                                    <th class="sorting_disabled">
-                                        Nama
-                                    </th>
-                                    <th class="sorting_disabled">
-                                        Alamat
-                                    </th>
-                                    <th class="sorting_disabled">
-                                        Kelas
-                                    </th>
-                                    <th class="sorting_disabled">
-                                        Status
-                                    </th>
-                                    <th class="sorting_disabled">
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>1920100251</td>
-                                    <td class="font-weight-600">Kusnadi</td>
-                                    <td>Ki. Pacuan Kuda No. 933, Tangerang 90921, Kepri</td>
-                                    <td>XI RPL1</td>
-                                    <td>123456789012</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary"><i class="fas fa-search"></i></a>
-                                        <a href="#" class="btn btn-success"><i class="far fa-edit"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" id="table-1_info" role="status" aria-live="polite">
-                            Showing 1 to 4 of 4 entries
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-7">
-                        <div class="dataTables_paginate paging_simple_numbers" id="table-1_paginate">
-                            <ul class="pagination">
-                                <li class="paginate_button page-item previous disabled" id="table-1_previous">
-                                    <a href="#" aria-controls="table-1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                </li>
-                                <li class="paginate_button page-item active">
-                                    <a href="#" aria-controls="table-1" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                </li>
-                                <li class="paginate_button page-item next disabled" id="table-1_next">
-                                    <a href="#" aria-controls="table-1" data-dt-idx="2" tabindex="0" class="page-link">Next</a>
-                                </li>
-                            </ul>
+                @endif
+                <div class="table-responsive">
+                    <div id="table-1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <div class="col-md-12">
+                            {{-- <div class=""> --}}
+                            <table class="table table-striped dataTable no-footer" id="table-1" role="grid"
+                                aria-describedby="table-1_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="table-1"
+                                            aria-sort="ascending" aria-label="# : activate to sort column descending">
+                                            #
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="table-1"
+                                            aria-label="NISN: activate to sort column ascending">
+                                            NISN
+                                        </th>
+                                        <th class="sorting_disabled">
+                                            Nama
+                                        </th>
+                                        <th class="sorting_disabled" width="30%">
+                                            Alamat
+                                        </th>
+                                        <th class="sorting_disabled">
+                                            Kelas
+                                        </th>
+                                        <th class="sorting_disabled">
+                                            Status
+                                        </th>
+                                        <th class="sorting_disabled">
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($siswa as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->nisn }}</td>
+                                        <td class="font-weight-600">{{ $item->nama }}</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td>{{ $item->kelas->nama }}</td>
+                                        <td>{{ $item->no_telp }}</td>
+                                        <td>
+                                            <form method="POST"
+                                                action="{{ route('petugas.siswa.destroy',['siswa' => $item->id]) }}"
+                                                class="form">
+                                                @method('delete')
+                                                @csrf
+                                            </form>
+                                            <a href="{{ route('petugas.siswa.show', ['siswa'=>$item->id]) }}"
+                                                class="btn btn-primary"><i class="fas fa-search"></i></a>
+                                            <a href="{{ route('petugas.siswa.edit',['siswa'=>$item->id]) }}"
+                                                class="btn btn-success"><i class="far fa-edit"></i></a>
+                                            <button class="btn btn-danger" data-id="{{ $item->id }}"><i
+                                                    class="fas fa-trash-alt hapus"></i></button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 </div>
 @endsection
 @push('script')
+<script>
+    $(document).ready(function () {
+        $('#table-1').dataTable({
+            "dom": "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>t<'row'<'col-sm-12 col-md-6'i><'col-sm-12 col-md-6'p>>"
+        });
 
+        $("#table-1_filter").prepend(
+            '<a href="{{ route("petugas.siswa.create")  }}" class="btn btn-primary rounded-pill mr-3">Add Siswa <i class="far fa-plus-square"></i></a>'
+        )
+    });
+
+</script>
 @endpush

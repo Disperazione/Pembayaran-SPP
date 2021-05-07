@@ -19,7 +19,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('petugas.data_siswa.index');
+        return view('petugas.data_siswa.index', ['siswa' => Siswa::orderby('nisn','ASC')->get()]);
     }
 
     /**
@@ -44,7 +44,7 @@ class SiswaController extends Controller
         $request->validated();
         $request->request->add(['password' => Hash::make('password')]);
         Siswa::create($request->all());
-        return redirect()->route('petugas.siswa.index');
+        return redirect()->route('petugas.siswa.index')->with('success','Data siswa berhasil di tambahkan');
     }
 
     /**
@@ -80,7 +80,7 @@ class SiswaController extends Controller
     {
         $request->validated();
         $siswa->update($request->all());
-        return redirect()->route('petugas.siswa.index');
+        return redirect()->route('petugas.siswa.index')->with('success', 'Data siswa berhasil di edit');
 
     }
 
@@ -93,6 +93,6 @@ class SiswaController extends Controller
     public function destroy(Siswa $siswa)
     {
         $siswa->delete();
-        return redirect()->route('petugas.siswa.index');
+        return redirect()->route('petugas.siswa.index')->with('success', 'Data siswa berhasil di hapus');
     }
 }
