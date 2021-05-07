@@ -28,4 +28,12 @@ class Authrequest extends FormRequest
             'password' => 'required|min:8'
         ];
     }
+    public function messages()
+    {
+        return [
+            "username.required" => "Username tidak boleh kosong",
+            "passowrd.required" => "Password tidak boleh kosong",
+            "passowrd.min" => "Password minimal 8 character",
+        ];
+    }
 }

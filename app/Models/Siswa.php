@@ -20,12 +20,13 @@ class Siswa extends Model implements
     use Authenticatable, Authorizable, CanResetPassword, HasFactory, Notifiable;
     use HasFactory;
     protected $table = 'siswa';
-    protected $guard = [];
+    protected $guarded  = ['_token'];
     protected $hidden = ['password'];
+
 
     public function kelas()
     {
-        return $this->belongsTo(Kelas::class,'id_kelas');
+        return $this->belongsTo(Kelas::class,'kelas_id');
     }
     public function pembayaran()
     {
