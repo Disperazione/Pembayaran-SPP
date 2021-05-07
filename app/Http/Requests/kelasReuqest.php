@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SppRequest extends FormRequest
+class kelasReuqest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,17 +23,16 @@ class SppRequest extends FormRequest
      */
     public function rules()
     {
-        $id = empty($this->spp->id) ? ' ' : $this->spp->id;
+        $id = empty($this->kelas->id) ? ' ' : $this->kelas->id;
         return [
-            'tahun' => "required|numeric|unique:spp,tahun,$id",
-            'nominal' => 'required|numeric'
+            'nama'=> "required|unique:kelas,nama,$id",
         ];
     }
     public function messages()
     {
         return [
-            'tahun.required' => 'Data tahun tidak boleh kosong',
-            'nominal.required' => 'Nominal tidak boleh kosong',
+            'nama.required' => 'Nama kelas tidak boleh kosong',
+            'nama.unique' => "Nama kelas sudah tersedia"
         ];
     }
 }

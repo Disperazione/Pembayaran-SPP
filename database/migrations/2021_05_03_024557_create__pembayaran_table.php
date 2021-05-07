@@ -19,7 +19,7 @@ class CreatePembayaranTable extends Migration
             $table->date('tgl_bayar');
             $table->string('bulan_bayar');
             $table->string('tahun_bayar');
-            $table->unsignedBigInteger('spp_id');
+            $table->unsignedBigInteger('spp_id')->nullable();
             $table->string('jumlah_bayar', 45);
             $table->enum('status', ['bayar', 'belum']);
              $table->unsignedBigInteger('petugas_id');

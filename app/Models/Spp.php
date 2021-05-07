@@ -9,7 +9,7 @@ class Spp extends Model
 {
     use HasFactory;
     protected $table = 'spp';
-    protected $guard = [];
+    protected $guarded  = ['_token'];
 
     public function pembayaran()
     {

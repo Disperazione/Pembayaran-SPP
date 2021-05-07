@@ -21,7 +21,7 @@ class CreateSiswaTable extends Migration
             $table->longText('alamat');
             $table->string('no_telp');
             $table->string('password');
-            $table->unsignedBigInteger('kelas_id');
+            $table->unsignedBigInteger('kelas_id')->nullable();
             $table->timestamps();
         });
     }

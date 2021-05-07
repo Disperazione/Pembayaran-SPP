@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\petugas;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\kelasReuqest;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
-
+use App\Models\Siswa;
 class KelasController extends Controller
 {
     /**
@@ -34,9 +35,11 @@ class KelasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(kelasReuqest $request)
     {
-        //
+        $request->validated();
+        Kelas::create($request->all());
+        return redirect()->route('petugas.kelas.index')->with('success', 'Data berhasil di tambahkan');
     }
 
     /**
@@ -45,7 +48,7 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function show(Kelas $kelas)
+    public function show(Kelas $kela)
     {
         return view('petugas.data_kelas.show');
     }
@@ -56,9 +59,9 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kelas $kelas)
+    public function edit(Kelas $kela)
     {
-        return view('petugas.data_kelas.edit');
+        return view('petugas.data_kelas.edit', ['kelas'=> $kela]);
     }
 
     /**
@@ -68,9 +71,11 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelas $kelas)
+    public function update(kelasReuqest $request, Kelas $kela)
     {
-
+        $request->validated();
+        $kela->update($request->all());
+        return redirect()->route('petugas.kelas.index')->with('success', 'Data berhasil di update');
     }
 
     /**
@@ -79,9 +84,10 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kelas)
+    public function destroy(Kelas $kela)
     {
-        $kelas->delete();
+        Siswa::where('kelas_id',$kela->id)->update(['kelas_id'=> null]);
+        $kela->delete();
         return redirect()->route('petugas.kelas.index')->with('success', 'Data kelas berhasil di hapus');
     }
 }

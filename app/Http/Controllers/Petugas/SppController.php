@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\petugas;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\kelasReuqest;
+use App\Http\Requests\SppRequest;
+use App\Models\Kelas;
+use App\Models\Pembayaran;
 use App\Models\Spp;
 use Illuminate\Http\Request;
 
@@ -15,7 +19,7 @@ class SppController extends Controller
      */
     public function index()
     {
-        return view('petugas.data_spp.index');
+        return view('petugas.data_spp.index', ['spp' => Spp::all()]);
     }
 
     /**
@@ -25,7 +29,7 @@ class SppController extends Controller
      */
     public function create()
     {
-        return view('petugas.data_spp.create');
+        return view('petugas.data_spp.create', ['spp'=>Spp::all()]);
     }
 
     /**
@@ -34,9 +38,11 @@ class SppController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SppRequest $request)
     {
-        //
+        $request->validated();
+        Spp::create($request->all());
+        return redirect()->route('petugas.spp.index')->with('success', 'Data spp berhasil di tambah');
     }
 
     /**
@@ -47,7 +53,7 @@ class SppController extends Controller
      */
     public function show(Spp $spp)
     {
-        return view('petugas.data_spp.show');
+        return view('petugas.data_spp.show', ['spp' => $spp]);
     }
 
     /**
@@ -58,7 +64,7 @@ class SppController extends Controller
      */
     public function edit(Spp $spp)
     {
-        return view('petugas.data_spp.edit');
+        return view('petugas.data_spp.edit', ['spp' => $spp]);
     }
 
     /**
@@ -68,9 +74,11 @@ class SppController extends Controller
      * @param  \App\Models\Spp  $spp
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Spp $spp)
+    public function update(SppRequest $request, Spp $spp)
     {
-
+        $request->validated();
+        $spp->update($request->all());
+        return redirect()->route('petugas.spp.index')->with('success', 'Data spp berhasil di update');
     }
 
     /**
@@ -81,6 +89,8 @@ class SppController extends Controller
      */
     public function destroy(Spp $spp)
     {
-        //
+        Pembayaran::where('spp_id', $spp->id)->update(['spp_id' => null]);
+        $spp->delete();
+        return redirect()->route('petugas.spp.index')->with('success', 'Data SPP berhasil di hapus');
     }
 }

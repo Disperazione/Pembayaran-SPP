@@ -20,7 +20,7 @@ class Petugas extends Model implements
 {
     use Authenticatable, Authorizable, CanResetPassword, HasFactory, Notifiable;
     protected $table = 'petugas';
-    protected $guard = [];
+    protected $guarded  = ['_token'];
     protected $hidden = ['password'];
     public function pembayaran()
     {

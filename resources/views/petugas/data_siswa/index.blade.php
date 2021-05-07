@@ -71,7 +71,7 @@
                                         <td>{{ $item->nisn }}</td>
                                         <td class="font-weight-600">{{ $item->nama }}</td>
                                         <td>{{ $item->alamat }}</td>
-                                        <td>{{ $item->kelas->nama }}</td>
+                                        <td>{{ !empty($item->kelas->nama) ? $item->kelas->nama : 'Kelas kosong'  }}</td>
                                         <td>{{ $item->no_telp }}</td>
                                         <td>
                                             <form method="POST"
@@ -84,8 +84,14 @@
                                                 class="btn btn-primary"><i class="fas fa-search"></i></a>
                                             <a href="{{ route('petugas.siswa.edit',['siswa'=>$item->id]) }}"
                                                 class="btn btn-success"><i class="far fa-edit"></i></a>
-                                            <button class="btn btn-danger" data-id="{{ $item->id }}"><i
-                                                    class="fas fa-trash-alt hapus"></i></button>
+                                            <form method="POST"
+                                                action="{{ route('petugas.siswa.destroy', ['siswa' => $item->id]) }}"
+                                                id="form" class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn btn-danger hapus" id="hapus"><i
+                                                        class="fas fa-trash-alt"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -101,16 +107,5 @@
 </div>
 @endsection
 @push('script')
-<script>
-    $(document).ready(function () {
-        $('#table-1').dataTable({
-            "dom": "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>t<'row'<'col-sm-12 col-md-6'i><'col-sm-12 col-md-6'p>>"
-        });
-
-        $("#table-1_filter").prepend(
-            '<a href="{{ route("petugas.siswa.create")  }}" class="btn btn-primary rounded-pill mr-3">Add Siswa <i class="far fa-plus-square"></i></a>'
-        )
-    });
-
-</script>
+<script src="{{ asset('assets/js/pages/siswa.js') }}"></script>
 @endpush

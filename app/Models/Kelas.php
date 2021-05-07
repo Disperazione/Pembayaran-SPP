@@ -9,7 +9,7 @@ class Kelas extends Model
 {
     use HasFactory;
     protected $table = 'kelas';
-    protected $guard = [];
+    protected $guarded  = ['_token'];
 
     public function siswa()
     {

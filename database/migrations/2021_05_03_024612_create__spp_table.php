@@ -16,7 +16,7 @@ class CreateSppTable extends Migration
         Schema::create('spp', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('tahun');
-            $table->bigInteger('nomimal');
+            $table->bigInteger('nominal');
             $table->timestamps();
         });
         Schema::table('pembayaran', function (Blueprint $table) {
