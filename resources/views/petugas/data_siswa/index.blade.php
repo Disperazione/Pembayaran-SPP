@@ -59,7 +59,7 @@
                                         <th class="sorting_disabled">
                                             Status
                                         </th>
-                                        <th class="sorting_disabled">
+                                        <th class="sorting_disabled" width="17%">
                                             Action
                                         </th>
                                     </tr>
