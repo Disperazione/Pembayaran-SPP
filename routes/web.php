@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 
 // petugas controller
 use App\Http\Controllers\petugas\mainController as maincontrollers;
-
+use App\Http\Controllers\petugas\SiswaController as Siswas;
 // siswa controller
 use App\Http\Controllers\siswa\mainController;
 
@@ -49,6 +49,7 @@ Route::prefix('petugas')->namespace('petugas')->name('petugas.')->middleware(['a
     // admin
     Route::middleware('level:admin')->group(function () {
         Route::resource('siswa', SiswaController::class);
+        Route::get('/siswa/{siswa}/transaksi', [Siswas::class, 'siswa_transaksi'])->name('siswa.transaksi');
         Route::resource('main', PetugasController::class);
         Route::resource('spp', SppController::class);
         Route::resource('kelas', KelasController::class);

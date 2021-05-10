@@ -28,7 +28,7 @@ class Siswa extends Model implements
     {
         return $this->belongsTo(Kelas::class,'kelas_id');
     }
-    public function pembayaran()
+    public function transaksi()
     {
         return $this->hasMany(Pembayaran::class, 'siswa_id','id');
     }

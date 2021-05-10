@@ -58,6 +58,10 @@ class SiswaController extends Controller
         return view('petugas.data_siswa.show', ['siswa'=> $siswa]);
     }
 
+    public function siswa_transaksi(Siswa $siswa)
+    {
+        return view('petugas.data_siswa.siswa_transaksi', ['transaksi' => $siswa->transaksi , 'siswa' => $siswa]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

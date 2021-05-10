@@ -44,8 +44,15 @@
                 </a>
             </li>
             @endif
-            @if (Auth::guard('petugas')->user()->level == 'petugas' or Auth::guard('petugas')->user()->level == 'admin')
-            <li class="menu-header">Petugas</li>
+            @if (Auth::guard('petugas')->user()->level == 'petugas')
+            <li class="menu-header">MASTER</li>
+            <li class="@if (Request::is('petugas/transaksi','petugas/transaksi/*')) active @endif">
+                <a href="{{ url('petugas/transaksi') }}" class="nav-link">
+                    <i class="far fa-credit-card"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li>
+            @elseif (Auth::guard('petugas')->user()->level == 'admin')
             <li class="@if (Request::is('petugas/transaksi','petugas/transaksi/*')) active @endif">
                 <a href="{{ url('petugas/transaksi') }}" class="nav-link">
                     <i class="far fa-credit-card"></i>

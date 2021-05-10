@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Petugas;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PetugasRequest;
 use App\Models\Petugas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PetugasController extends Controller
 {
@@ -15,7 +17,7 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        return view('petugas.data_petugas.index');
+        return view('petugas.data_petugas.index', ['petugas' => Petugas::all()]);
     }
 
     /**
@@ -34,9 +36,12 @@ class PetugasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PetugasRequest $request)
     {
-
+        $request->validated();
+        $request->request->add(['password'=> Hash::make($request->password)]);
+        Petugas::create($request->all());
+        return redirect()->route('petugas.main.index')->with('success', 'Data petugas berhasil di tambahkan');
     }
 
     /**
@@ -45,9 +50,9 @@ class PetugasController extends Controller
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function show(Petugas $petugas)
+    public function show(Petugas $main)
     {
-        return view('petugas.data_petugas.show');
+        return view('petugas.data_petugas.show', ['petugas' => $main]);
     }
 
     /**
@@ -56,9 +61,9 @@ class PetugasController extends Controller
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Petugas $petugas)
+    public function edit(Petugas $main)
     {
-        return view('petugas.data_petugas.show');
+        return view('petugas.data_petugas.edit', ['petugas' => $main]);
     }
 
     /**
@@ -68,9 +73,12 @@ class PetugasController extends Controller
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Petugas $petugas)
+    public function update(PetugasRequest $request, Petugas $main)
     {
-        //
+        $request->validated();
+        $request->request->add(['password' => Hash::make($request->password)]);
+        $main->update($request->all());
+        return redirect()->route('petugas.main.index')->with('success', 'Data petugas berhasil di update');
     }
 
     /**
@@ -79,8 +87,9 @@ class PetugasController extends Controller
      * @param  \App\Models\Petugas  $petugas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Petugas $petugas)
+    public function destroy(Petugas $main)
     {
-        //
+        $main->delete();
+        return redirect()->route('petugas.main.index')->with('success', 'Data petugas berhasil di hapus');
     }
 }

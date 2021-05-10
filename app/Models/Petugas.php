@@ -22,7 +22,7 @@ class Petugas extends Model implements
     protected $table = 'petugas';
     protected $guarded  = ['_token'];
     protected $hidden = ['password'];
-    public function pembayaran()
+    public function transaksi()
     {
         return $this->hasMany(Pembayaran::class,'petugas_id','id');
     }

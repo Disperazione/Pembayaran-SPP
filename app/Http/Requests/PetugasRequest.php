@@ -13,7 +13,7 @@ class PetugasRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,20 @@ class PetugasRequest extends FormRequest
      */
     public function rules()
     {
+        $id = empty($this->petugas->id) ? ' ' : $this->petugas->id;
         return [
-            //
+            'username' => "required|unique:petugas,username,{$id}",
+            'password' => 'required',
+            'level' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'username.required' => 'Username petugas tidak boleh kosong',
+            'username.unique' => "Username petugas sudah tersedia",
+            'password.required' => 'Password petugas tidak boleh kosong',
+            'level.required' => 'Level petugas tidak boleh kosong',
         ];
     }
 }

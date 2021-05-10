@@ -13,7 +13,7 @@ class TransaksiRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class TransaksiRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'siswa_id' => 'required',
+            'tgl_bayar' => 'required',
+            'bulan_bayar' => 'required',
+            'spp_id' => 'required',
+            'jumlah_bayar' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'siswa_id.required' => 'Data siswa tidak boleh kosong',
+            'tgl_bayar.required' => 'Tanggal bayar tidak boleh kosong',
+            'bulan_bayar.required' => 'Bulan bayar tidak boleh kosong',
+            'spp_id.required' => 'Spp tidak boleh kosong',
+            'jumlah_bayar.required' => 'Jumlah bayar tidak boleh kosong',
         ];
     }
 }

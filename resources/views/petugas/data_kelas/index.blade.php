@@ -80,7 +80,8 @@
         </div>
     </div>
 </div>
+<span class="d-none" id="nam" data-id="kelas"></span>
 @endsection
 @push('script')
-<script src="{{ asset('assets/js/pages/kelas.js') }}"></script>
+<script src="{{ asset('assets/js/main/table.js') }}"></script>
 @endpush

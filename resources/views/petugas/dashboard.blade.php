@@ -15,6 +15,7 @@
 @endsection
 @section('main')
 <div class="row">
+    @if (Auth::guard('petugas')->user()->level == 'admin')
     <div class="col-lg-3 col-md-6 col-sm-6 col-12 blok-dash">
         <div class="card card-statistic-1 shadow">
             <div class="card-icon bg-primary">
@@ -76,6 +77,9 @@
         </div>
     </div>
 
+    @endif
+
+
     <div class="col-12 col-md-4 col-lg-4">
         <div class="card shadow">
             <div class="card-body">
@@ -133,25 +137,26 @@
 <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 <script>
     $(document).ready(function () {
-           // requuest ajax
-            $.ajax({
-                url: "{{route('petugas.dashboard.ajax')}}",
-                type: "POST",
-                data: {
-                    _token: '{{csrf_token()}}'
-                },
-                success: function (data) {
-                    $('#admin').html(data.admin);
-                    $('#petugas').html(data.petugas);
-                    $('#siswa').html(data.siswa);
-                    $('#kelas').html(data.kelas);
-                    chart(data.bulan, data.bayar, data.belum)
+        // requuest ajax
+        $.ajax({
+            url: "{{route('petugas.dashboard.ajax')}}",
+            type: "POST",
+            data: {
+                _token: '{{csrf_token()}}'
+            },
+            success: function (data) {
+                $('#admin').html(data.admin);
+                $('#petugas').html(data.petugas);
+                $('#siswa').html(data.siswa);
+                $('#kelas').html(data.kelas);
+                chart(data.bulan, data.bayar, data.belum)
 
-                },
-                error: function (data) {
-                    console.log('Error:', data);
-                }
-            });
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
     })
+
 </script>
 @endpush

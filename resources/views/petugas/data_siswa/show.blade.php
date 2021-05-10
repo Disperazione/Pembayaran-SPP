@@ -24,6 +24,12 @@
                         <i class="fas fa-angle-right"></i>
                     </a>
                     <hr>
+                    <a href="{{ route('petugas.siswa.transaksi' ,['siswa' => $siswa->id]) }}" class="text-decoration-none">
+                        <i class="far fa-edit mr-2"></i>
+                        <span>Data Transaksi Siswa</span>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                    <hr>
                     <form method="POST" action="{{ route('petugas.siswa.destroy',['siswa' => $siswa->id]) }}" id="form">
                         @method('delete')
                         @csrf
@@ -33,6 +39,11 @@
                         <span>Hapus Data Siswa</span>
                         <i class="fas fa-angle-right"></i>
                     </a>
+                    <hr>
+                    <a href="{{ route('petugas.siswa.index') }}" class="text-decoration-none">
+                    <i class="fas fa-angle-left"></i>
+                    <span>Kembali</span>
+                </a>
 
 
                     <hr>

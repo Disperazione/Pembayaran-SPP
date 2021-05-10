@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\petugas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pembayaran;
+use App\Http\Requests\TransaksiRequest;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Carbon\CarbonPeriod;
-
+use App\Models\Pembayaran;
+use App\Models\Siswa;
+use App\Models\Spp;
+use Carbon\Carbon;
 class TransaksiController extends Controller
 {
     /**
@@ -17,7 +19,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        return view('petugas.data_transaksi.index');
+        return view('petugas.data_transaksi.index',['transaksi' => Pembayaran::all()]);
     }
 
     /**
@@ -28,11 +30,13 @@ class TransaksiController extends Controller
     public function create()
     {
         $result = CarbonPeriod::create("2021-01-01", "1 month", "2021-12-01");
-        $tanggal = [];
+        $bulan = [];
         foreach ($result as $key => $value) {
-            $tanggal[] = $value->format('F');
+            $bulan[] = $value->isoFormat('MMMM');
         }
-        return view('petugas.data_transaksi.create');
+        $siswa = Siswa::all();
+        $tahun = Spp::all();
+        return view('petugas.data_transaksi.create', compact('bulan','siswa','tahun'));
     }
 
     /**
@@ -41,9 +45,13 @@ class TransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TransaksiRequest $request)
     {
-        //
+        $request->validated();
+        $spp = Spp::where('id' , $request->spp_id)->first();
+        $request->request->add(['tahun_bayar'=> $spp->tahun , 'petugas_id' => Auth()->id()]);
+        Pembayaran::create($request->all());
+        return redirect()->route('petugas.transaksi.index')->with('success', 'Data transaksi berhasil di hapus');
     }
 
     /**
@@ -52,9 +60,9 @@ class TransaksiController extends Controller
      * @param  \App\Models\Pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembayaran $pembayaran)
+    public function show(Pembayaran $transaksi)
     {
-        return view('petugas.data_transaksi.show');
+        return view('petugas.data_transaksi.show', ['Transaksi' => $transaksi]);
     }
 
     /**
@@ -63,9 +71,17 @@ class TransaksiController extends Controller
      * @param  \App\Models\Pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pembayaran $pembayaran)
+    public function edit(Pembayaran $transaksi)
     {
-        return view('petugas.data_transaksi.edit');
+        $result = CarbonPeriod::create("2021-01-01", "1 month", "2021-12-01");
+        $bulan = [];
+        foreach ($result as $key => $value) {
+            $bulan[] = $value->isoFormat('MMMM');
+        }
+        $siswa = Siswa::all();
+        $tahun = Spp::all();
+        $Transaksi = $transaksi;
+        return view('petugas.data_transaksi.edit', compact('bulan', 'siswa', 'tahun','Transaksi'));
     }
 
     /**
@@ -75,9 +91,13 @@ class TransaksiController extends Controller
      * @param  \App\Models\Pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pembayaran $pembayaran)
+    public function update(TransaksiRequest $request, Pembayaran $transaksi)
     {
-        //
+        $request->validated();
+        $spp = Spp::where('id', $request->spp_id)->first();
+        $request->request->add(['tahun_bayar' => $spp->tahun, 'petugas_id' => Auth()->id()]);
+        $transaksi->update($request->all());
+        return redirect()->route('petugas.transaksi.index')->with('success', 'Data transaksi berhasil di update');
     }
 
     /**
@@ -86,8 +106,9 @@ class TransaksiController extends Controller
      * @param  \App\Models\Pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pembayaran $pembayaran)
+    public function destroy(Pembayaran $transaksi)
     {
-        //
+        $transaksi->delete();
+        return redirect()->route('petugas.transaksi.index')->with('success', 'Data transaksi berhasil di hapus');
     }
 }
