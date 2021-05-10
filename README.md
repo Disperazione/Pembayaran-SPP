@@ -10,7 +10,7 @@ Tugas kelompok pembuatan aplikasi pembayaran spp di sekolah [SMK Taruna Bhakti D
 
 - Admin Dashboard
 
-<a href='https://postimg.cc/rdQ3jgcS' target='_blank'><img src='https://i.postimg.cc/JnL81d2d/preview-dashboard.png' border='0' alt='preview-dashboard'></a>
+<a href='https://postimg.cc/DJxwQMKb' target='_blank'><img src='https://i.postimg.cc/6qX4Xkjz/Annotation-2021-05-10-101553.png' border='0' alt='Dashboard'/></a>
 
 - Admin Transaksi
 
