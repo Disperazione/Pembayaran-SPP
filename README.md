@@ -8,9 +8,13 @@ Tugas kelompok pembuatan aplikasi pembayaran spp di sekolah [SMK Taruna Bhakti D
 
 ## Preview
 
-- Admin dashboard
+- Admin Dashboard
 
 <a href='https://postimg.cc/rdQ3jgcS' target='_blank'><img src='https://i.postimg.cc/JnL81d2d/preview-dashboard.png' border='0' alt='preview-dashboard'></a>
+
+- Admin Transaksi
+
+<a href='https://postimg.cc/JGvtdvHN' target='_blank'><img src='https://i.postimg.cc/9QFTzjWn/transaksi.png' border='0' alt='transaksi'/></a>
 
 ## How to use
 
