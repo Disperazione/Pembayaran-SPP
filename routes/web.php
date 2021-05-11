@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\Auth\AuthController;
-
 // petugas controller
 use App\Http\Controllers\petugas\mainController as maincontrollers;
 use App\Http\Controllers\petugas\SiswaController as Siswas;
 // siswa controller
 use App\Http\Controllers\siswa\mainController;
-
+// Excel Contorller
+use App\Http\Controllers\Petugas\ExcelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +53,13 @@ Route::prefix('petugas')->namespace('petugas')->name('petugas.')->middleware(['a
         Route::resource('main', PetugasController::class);
         Route::resource('spp', SppController::class);
         Route::resource('kelas', KelasController::class);
+
+        // Export route Excel
+        Route::get('/export/siswa', [ExcelController::class, 'siswa'])->name('siswa.export');
+        Route::get('/export/kelas', [ExcelController::class, 'kelas'])->name('kelas.export');
+        Route::get('/export/spp', [ExcelController::class, 'spp'])->name('spp.export');
+        Route::get('/export/main', [ExcelController::class, 'petugas'])->name('main.export');
+        Route::get('/export/transaksi', [ExcelController::class, 'transaksi'])->name('transaksi.export');
     });
 });
 

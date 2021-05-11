@@ -6,6 +6,7 @@
         });
 
         $("#table-1_filter").prepend(
+            '<a href="/petugas/export/'+name+'" class="btn btn-success rounded-pill mr-3">Export Excel <i class="far fa-plus-square"></i></a>'+
             '<a href="/petugas/'+name+'/create" class="btn btn-primary rounded-pill mr-3">Tambah '+name+' <i class="far fa-plus-square"></i></a>'
         )
         $('.hapus').on('click', function (e) {
