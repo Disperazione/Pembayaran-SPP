@@ -5,7 +5,7 @@
 @section('title', 'Pembayaran SPP | Data Petugas')
 @section('judul', 'Data Petugas')
 @section('breadcrump')
-<div class="breadcrumb-item "><i class="fas fa-user"></i> {{ Auth::user()->username }}</div>
+<div class="breadcrumb-item "><i class="fas fa-user"></i> Dashboard</div>
 <div class="breadcrumb-item "><i class="fas fa-tachometer-alt"></i> Data Petugas</div>
 @endsection
 @section('main')

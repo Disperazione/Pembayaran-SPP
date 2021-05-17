@@ -10,7 +10,7 @@
 @section('title', 'Pembayaran SPP | Data Siswa')
 @section('judul', 'Data Siswa')
 @section('breadcrump')
-<div class="breadcrumb-item "><i class="fas fa-user"></i> {{ Auth::user()->username }}</div>
+<div class="breadcrumb-item "><i class="fas fa-user"></i> Dashboard</div>
 <div class="breadcrumb-item "><i class="fas fa-tachometer-alt"></i> Data Siswa</div>
 @endsection
 @section('main')

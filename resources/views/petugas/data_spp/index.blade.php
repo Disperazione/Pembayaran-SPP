@@ -5,7 +5,7 @@
 @section('title', 'Pembayaran SPP | DASHBOARD')
 @section('judul', 'Data SPP')
 @section('breadcrump')
-<div class="breadcrumb-item "><i class="fas fa-user"></i> {{ Auth::user()->username }}</div>
+<div class="breadcrumb-item "><i class="fas fa-user"></i> Dashboard</div>
 <div class="breadcrumb-item "><i class="fas fa-tachometer-alt"></i> Data Kelas</div>
 @endsection
 @section('main')
