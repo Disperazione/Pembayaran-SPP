@@ -8,6 +8,14 @@ Tugas kelompok pembuatan aplikasi pembayaran spp di sekolah [SMK Taruna Bhakti D
 
 ## Preview
 
+- Tagihan Pembayaran SPP Siswa (transaksi)
+
+<a href='https://postimg.cc/tZ4cZ5Hg' target='_blank'><img src='https://i.postimg.cc/G2Fnf77v/Annotation-2021-05-17-205527.png' border='0' alt='Tagihan Pembayaran'/></a>
+
+- History Pembayaran SPP Siswa
+
+<a href='https://postimg.cc/d7b7DWC2' target='_blank'><img src='https://i.postimg.cc/Qttc4wxy/Annotation-2021-05-17-205930.png' border='0' alt='History Pembayaran SPP'/></a>
+
 - Admin Dashboard
 
 <a href='https://postimg.cc/DJxwQMKb' target='_blank'><img src='https://i.postimg.cc/6qX4Xkjz/Annotation-2021-05-10-101553.png' border='0' alt='Dashboard'/></a>
