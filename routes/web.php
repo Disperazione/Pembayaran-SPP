@@ -31,9 +31,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // route siswa
-Route::prefix('siswa')->name('siswa')->namespace('siswa')->middleware(['auth:siswa','level:siswa'])->group(function () {
+Route::prefix('siswa')->name('siswa.')->namespace('siswa')->middleware(['auth:siswa','level:siswa'])->group(function () {
     Route::get('/dashboard', [mainController::class, 'dashboard'])->name('dashboard');
     Route::get('/transaksi', [mainController::class, 'transaksi'])->name('transaksi');
+    Route::put('/transaksi/{pembayaran}', [mainController::class, 'tambah_transaksi'])->name('tambah.transaksi');
     Route::get('/history', [mainController::class, 'history'])->name('history');
 });
 

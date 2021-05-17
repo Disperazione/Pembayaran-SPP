@@ -70,7 +70,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- JS Libraies -->
 @stack('script')
-
+@include('sweetalert::alert')
 <!-- Template JS File -->
 <script src="{{ asset('template/assets/js/scripts.js') }}"></script>
 <script src="{{ asset('template/assets/js/custom.js') }}"></script>

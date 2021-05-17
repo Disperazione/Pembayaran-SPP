@@ -45,7 +45,7 @@
                                             Tanggal Bayar
                                         </th>
                                         <th class="sorting_disabled">
-                                            Bulan Bayar
+                                            Bulan
                                         </th>
                                         <th class="sorting_disabled">
                                             Tahun Spp
